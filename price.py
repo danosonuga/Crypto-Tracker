@@ -1,7 +1,6 @@
 import requests
 import json
 import time
-from urllib3.exceptions import NewConnectionError
 
 # GLOBAL VARIABLES
 payload={}
