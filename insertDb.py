@@ -1,7 +1,8 @@
 import pymysql
 import time
-from datetime import datetime
+import datetime
 from price import binance_qry
+from datetime import timedelta as td
 import threading
 
 # insertDB - Inserts Data from Binance Price_Data API into the Db asynchonously
@@ -28,14 +29,11 @@ def insertDb():
         price1 = data["price"]
         calcTime1 = data["calcTime"]
 
-        my_time = time.strftime('%Y-%m-%d %H:%M:%S.%f', time.localtime(calcTime1))
-        mytime = my_time[:-3]
-        
-        # mytime = calcTime1.strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
-        print(mytime)
+        calcTime = calcTime1 + 3600000
+
 
         s, ms = divmod(calcTime1, 1000)
-        formatTime1 = '%s.%03d' % (time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(s)), ms)
+        formatTime1 = str('%s.%03d' % (time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(s)), ms)).split('.')[0]
 
         insert1 = "INSERT INTO price(symbol,price,calcTime) VALUES('%s', '%s', '%s')" % (symbol1, price1, formatTime1)
         cursor.execute(insert1)

@@ -1,6 +1,7 @@
 import requests
 import json
 import time
+from urllib3.exceptions import NewConnectionError
 
 # GLOBAL VARIABLES
 payload={}
@@ -25,15 +26,16 @@ def binance_qry(binance_base_url: str, symbol: str, api_key: str):
   
   url = f"{binance_base_url}/sapi/v1/margin/priceIndex?symbol={symbol}"
 
-  response = None
+  # response = None
 
   try:
     response = requests.request("GET", url, headers=headers, data=payload).json()
-    print("Success!")
     return response
-  except Exception as e:
-    print("Something went wrong. Check your internet connection or a typo in the URL")
+  except requests.exceptions.ConnectionError as e:
+    print("Something went wrong. Check your internet connection")
     exit()
+  except response is None as e:
+    print("No data gotten from the binance API")
   else:
     print("Something else happened")
 

@@ -12,7 +12,7 @@ def fetchLastHour():
     daytime_p = datetime.datetime.now()
     today = daytime_p.strftime('%Y-%m-%d %H:%M:%S')
 
-    daytime_past = daytime_p - td(hours= 2)
+    daytime_past = daytime_p - td(hours= 1)
     hourAgo = daytime_past.strftime('%Y-%m-%d %H:%M:%S')
     
     # Query All from the Db
@@ -27,19 +27,19 @@ def fetchLastHour():
     print(df)
 
     #Highest and Lowest Values
-    print(df['price'].max())
-    print(df['price'].min())
+    print("The Maximum Price is: {}".format(df['price'].max()))
+    print("The Minimum Price is: {}".format(df['price'].min()))
 
     #Mean Value
-    print(df['price'].mean().round(2))
+    print("The Mean Price is: {}".format(df['price'].mean().round(2)))
 
     #Standard Deviation
-    print(df['price'].std().round(2))
+    print("The Standard Deviation is: {}".format(df['price'].std().round(2)))
 
     #Variant
-    print(df['price'].var().round(2))
+    print("The Variant is: {}".format(df['price'].var().round(2)))
 
     #Open and Closed Value
-    print(df.head(1))
-    print(df.tail(1))
+    print("The First data is: {}".format(df.head(1)['price']))
+    print("The Last data is: {}".format(df.tail(1)['price']))
 fetchLastHour()
