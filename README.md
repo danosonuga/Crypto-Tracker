@@ -1,5 +1,5 @@
 # Crypto Tracker Overview
-..* This Project aims to predict crypto price changes by using the Binance API as a source of data, coupled with our algorithm to make further predictions
+* This Project aims to predict crypto price changes by using the Binance API as a source of data, coupled with our algorithm to make further predictions
 * Python was used for this project alongside the Pandas library for data analysis.
 
 ## How to run on your system
@@ -12,4 +12,4 @@
 ## How to use this repo
 Once the previous phases have been accomplished, you can now proceed to running the command `python nameoffile.py`. Taking the `fetchAllDb.py` file for example.
 
-https://github.com/danosonuga/Crypto-Tracker/blob/main/Screenshot%202022-10-05%20101957.png
+![alt text](https://github.com/danosonuga/Crypto-Tracker/blob/main/Screenshot%202022-10-05%20101957.png "Python Run screenshot")
