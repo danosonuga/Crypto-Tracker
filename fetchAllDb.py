@@ -19,10 +19,10 @@ def fetchDb():
             print("Increase of: 0%")
         elif i > 0:
             if testprice[i] > testprice[i - 1]:
-                percentage = (testprice[i] / (testprice[i] + testprice[i - 1])) * 100
+                percentage = ((testprice[i] - testprice[i - 1]) / testprice[i - 1]) * 100
                 print("Increase of: {}%".format(round(percentage, 2)))
             elif testprice[i] < testprice[i -1]:
-                percentage = (testprice[i] / (testprice[i] + testprice[i - 1])) * 100
+                percentage = ((testprice[i] - testprice[i - 1]) / testprice[i - 1]) * 100
                 print("Decrease of: {}%".format(round(percentage, 2)))
     
     # Converting the data into a data frame for Table-like presentation
