@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'home' %}">24H</a>
+    <a href="{% url 'last_4' %}">4H</a>
+    <a href="{% url 'last_1' %}">1H</a>
+    <a href="{% url 'last_15' %}">15M</a>
+    {% if data %}
+        <table border="1">
+            <tr>
+                <th>Highest Value</th>
+                <th>Lowest Value</th>
+                <th>Mean Value</th>
+                <th>Standard Deviation</th>
+                <th>Variant</th>
+                <th>Open Value</th>
+                <th>Close Value</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+            {% for item in data %}
+            <tr>
+                <td>{{ item.highestValue }}</td>
+                <td>{{ item.lowestValue }}</td>
+                <td>{{ item.meanValue }}</td>
+                <td>{{ item.standardDev }}</td>
+                <td>{{ item.variant }}</td>
+                <td>{{ item.openVal }}</td>
+                <td>{{ item.closeVal }}</td>
+                <td>{{ item.startDate }}</td>
+                <td>{{ item.endDate }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <!-- {{data|safe}} -->
+</body>
+</html>
